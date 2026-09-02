@@ -1,0 +1,40 @@
+version: "3.0" 
+name: hashicorp-vault-test-containers
+services:
+  hashicorp-vault-test:
+    image: hashicorp/vault:latest
+    container_name: "hashicorp-vault-test"
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: root
+      VAULT_ADDR: 'https://0.0.0.0:8251'
+      VAULT_LOCAL_CONFIG: '{"listener": [{"tcp":{"address": "0.0.0.0:8251","tls_disable":"1"}}], "default_lease_ttl": "168h", "max_lease_ttl": "720h"}, "ui": true}'
+    volumes:
+      - ./plugins/:/vault/plugins
+      - ../../testHelpers/:/testHelpers
+    cap_add:
+      - IPC_LOCK
+    healthcheck:
+      retries: 5
+    ports:
+      - "8251:8251"
+    privileged: true
+    command: server -dev -dev-root-token-id=root -dev-plugin-dir=/vault/plugins
+  #   networks: 
+  #     - web
+  # mariadb-test-integration:
+  #   build:
+  #     dockerfile: ./docker-files/MariaDB_Dockerfile
+  #   container_name: "mariadb-test-integration"
+  #   restart: always
+  #   environment:
+  #     MARIADB_ROOT_PASSWORD: example
+  #   volumes:
+  #     - ./mysql-config:/etc/mysql/conf.d
+  #     - ./db:/var/lib/mysql
+  #   networks: 
+  #     - web
+
+# networks:
+#   web:
+#     external: true
+      
