@@ -1,0 +1,93 @@
+{
+    "ruleUse": {
+      "tokens": [
+        {
+          "name": "MAIN1",
+          "timelock": 0,
+          "timeout": 0,
+          "groups": [
+            {
+              "name": "MAIN1",
+              "quorum": 1,
+              "approvals": [
+                {
+                  "type": "public_key",
+                  "name": "replace_me_with_approval_name",
+                  "value":"replace_me_with_approval_key"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "ruleBlock": {
+      "tokens": [
+        {
+          "name": "MAIN1",
+          "timelock": 0,
+          "timeout": 0,
+          "groups": [
+            {
+              "name": "MAIN1",
+              "quorum": 1,
+              "approvals": [
+                {
+                  "type": "public_key",
+                  "name": "replace_me_with_approval_name",
+                  "value":"replace_me_with_approval_key"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "ruleUnblock": {
+      "tokens": [
+        {
+          "name": "MAIN1",
+          "timelock": 0,
+          "timeout": 0,
+          "groups": [
+            {
+              "name": "MAIN1",
+              "quorum": 1,
+              "approvals": [
+                {
+                  "type": "public_key",
+                  "name": "replace_me_with_approval_name",
+                  "value":"replace_me_with_approval_key"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "ruleModify": {
+      "tokens": [
+        {
+          "name": "MAIN1",
+          "timelock": 0,
+          "timeout": 0,
+          "groups": [
+            {
+              "name": "MAIN1",
+              "quorum": 1,
+              "approvals": [
+                {
+                  "type": "public_key",
+                  "name": "replace_me_with_approval_name",
+                  "value":"replace_me_with_approval_key"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "keyStatus": {
+      "blocked": false
+    }
+  }
