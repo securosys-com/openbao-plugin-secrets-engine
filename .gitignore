@@ -1,0 +1,12 @@
+builds
+vault
+.env
+
+deploy
+.gitlab-ci.yml
+
+deploy
+.gitlab-ci.yml
+
+deploy
+.gitlab-ci.yml

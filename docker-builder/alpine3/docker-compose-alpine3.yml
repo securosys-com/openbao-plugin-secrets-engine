@@ -1,0 +1,56 @@
+  version: "3.3"
+  services:
+    golang-builder-alpine3-amd64:
+      platform: linux/amd64
+      environment:
+        - DOCKER_OS=alpine3
+        - DOCKER_ARCH=amd64
+      image: amd64/golang:1.21.3-alpine3.18
+      container_name: golang-alpine3-amd64
+      restart: always
+      
+      volumes:
+        - ./../:/docker-scripts # place for application configuration files
+        - ./../../:/src # place for application configuration files
+      command: sh -c "sleep 1s &&
+              apk update &&
+              apk add zip &&
+              apk add perl-utils &&
+              cd /docker-scripts && 
+              sh build-in-docker.sh"
+    golang-builder-alpine3-i386:
+      platform: linux/i386
+      environment:
+        - DOCKER_OS=alpine3
+        - DOCKER_ARCH=386
+      image: i386/golang:1.21.3-alpine3.18
+      container_name: golang-alpine3-i386
+      restart: always
+      
+      volumes:
+        - ./../:/docker-scripts # place for application configuration files
+        - ./../../:/src # place for application configuration files
+      command: sh -c "sleep 1s &&
+              apk update &&
+              apk add zip &&
+              apk add perl-utils &&
+              cd /docker-scripts && 
+              sh build-in-docker.sh"
+    golang-builder-alpine3-arm64:
+      platform: linux/arm64
+      environment:
+        - DOCKER_OS=alpine3
+        - DOCKER_ARCH=arm64
+      image: arm64v8/golang:1.21.3-alpine3.18
+      container_name: golang-alpine3-arm64
+      restart: always
+      
+      volumes:
+        - ./../:/docker-scripts # place for application configuration files
+        - ./../../:/src # place for application configuration files
+      command: sh -c "sleep 1s &&
+              apk update &&
+              apk add zip &&
+              apk add perl-utils &&
+              cd /docker-scripts && 
+              sh build-in-docker.sh"
