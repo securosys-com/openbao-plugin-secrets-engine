@@ -1,0 +1,18 @@
+[mariadb]
+plugin-load-add=hashicorp_key_management.so
+loose-hashicorp-key-management
+loose-hashicorp-key-management-vault-url="http://172.17.0.3:8251/v1/securosys-hsm/integrations/mariadb/test_async/?cipher_algorithm=RSA&key_name=rsa_with_policy&version="
+loose-hashicorp-key-management-token="root"
+loose-hashicorp-key-management-check-kv-version="off"
+loose-hashicorp-key-management-timeout=10
+loose-hashicorp-key-management-retries=0
+loose-hashicorp-key-management-use-cache-on-timeout="on"
+loose-hashicorp-key-management-caching-enabled="on"
+loose-hashicorp-key-management-cache-timeout=31556952000
+loose-hashicorp-key-management-cache-version-timeout=31556952000
+
+innodb_encrypt_tables = ON
+innodb_encrypt_temporary_tables = OFF
+innodb_encrypt_log = OFF
+innodb_encryption_threads = 4
+innodb_encryption_rotate_key_age = 1

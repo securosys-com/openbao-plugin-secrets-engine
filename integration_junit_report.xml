@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="49">
+	<testsuite name="securosys.ch/integration/tests" tests="49" failures="0" errors="0" id="0" hostname="deb11buildxl" time="57.197" timestamp="2023-11-28T14:56:21+01:00">
+		<testcase name="TestEnablePlugin" classname="securosys.ch/integration/tests" time="0.080"></testcase>
+		<testcase name="TestEnablePlugin/A.1_Test_Enable_Plugin" classname="securosys.ch/integration/tests" time="0.080"></testcase>
+		<testcase name="TestConfigPlugin" classname="securosys.ch/integration/tests" time="0.560"></testcase>
+		<testcase name="TestConfigPlugin/B.1_Test_Config_Plugin" classname="securosys.ch/integration/tests" time="0.560"></testcase>
+		<testcase name="TestCreateAESKeyPlugin" classname="securosys.ch/integration/tests" time="7.490"></testcase>
+		<testcase name="TestCreateAESKeyPlugin/C.1_Test_Create_Key_AES_Key_with_name_integrationTestKeyAES" classname="securosys.ch/integration/tests" time="2.750"></testcase>
+		<testcase name="TestCreateAESKeyPlugin/C.2_Test_List_Keys" classname="securosys.ch/integration/tests" time="0.010"></testcase>
+		<testcase name="TestCreateAESKeyPlugin/C.3_Read_AES_Key_with_name_integrationTestKeyAES" classname="securosys.ch/integration/tests" time="0.010"></testcase>
+		<testcase name="TestCreateAESKeyPlugin/C.4_Rotate_AES_Key_with_name_integrationTestKeyAES" classname="securosys.ch/integration/tests" time="2.180"></testcase>
+		<testcase name="TestCreateAESKeyPlugin/C.5_Test_List_Versions_of_Key_integrationTestKeyAES" classname="securosys.ch/integration/tests" time="0.010"></testcase>
+		<testcase name="TestCreateAESKeyPlugin/C.6_Test_List_Versions_of_Key_integrationTestKeyAES" classname="securosys.ch/integration/tests" time="0.000"></testcase>
+		<testcase name="TestCreateAESKeyPlugin/C.7_Export_AES_Key_with_name_integrationTestKeyAES" classname="securosys.ch/integration/tests" time="1.290"></testcase>
+		<testcase name="TestCreateAESKeyPlugin/C.8_Test_Remove_Key_AES_Key_with_name_integrationTestKeyAES" classname="securosys.ch/integration/tests" time="1.240"></testcase>
+		<testcase name="TestCreateKeyByKeyNamePlugin" classname="securosys.ch/integration/tests" time="5.500"></testcase>
+		<testcase name="TestCreateKeyByKeyNamePlugin/C.1_Test_Create_Key_RSA_Key_with_label_integrationTestKeyRSAName_using_name_rsa-2048" classname="securosys.ch/integration/tests" time="4.220"></testcase>
+		<testcase name="TestCreateKeyByKeyNamePlugin/C.2_Test_Remove_Key_RSA_Key_with_name_integrationTestKeyRSAName" classname="securosys.ch/integration/tests" time="1.290"></testcase>
+		<testcase name="TestCreateRSAKeyPlugin" classname="securosys.ch/integration/tests" time="13.380"></testcase>
+		<testcase name="TestCreateRSAKeyPlugin/C.1_Test_Create_Key_RSA_Key_with_name_integrationTestKeyRSA" classname="securosys.ch/integration/tests" time="4.570"></testcase>
+		<testcase name="TestCreateRSAKeyPlugin/C.2_Test_List_Keys" classname="securosys.ch/integration/tests" time="0.000"></testcase>
+		<testcase name="TestCreateRSAKeyPlugin/C.3_Read_RSA_Key_with_name_integrationTestKeyRSA" classname="securosys.ch/integration/tests" time="0.000"></testcase>
+		<testcase name="TestCreateRSAKeyPlugin/C.4_Rotate_RSA_Key_with_name_integrationTestKeyRSA" classname="securosys.ch/integration/tests" time="4.030"></testcase>
+		<testcase name="TestCreateRSAKeyPlugin/C.5_Test_List_Versions_of_Key_integrationTestKeyRSA" classname="securosys.ch/integration/tests" time="0.000"></testcase>
+		<testcase name="TestCreateRSAKeyPlugin/C.6_Test_List_Versions_of_Key_integrationTestKeyRSA" classname="securosys.ch/integration/tests" time="0.000"></testcase>
+		<testcase name="TestCreateRSAKeyPlugin/C.7_Export_RSA_Key_with_name_integrationTestKeyRSA" classname="securosys.ch/integration/tests" time="1.560"></testcase>
+		<testcase name="TestCreateRSAKeyPlugin/C.8_Update_password_RSA_Key_with_name_integrationTestKeyRSA" classname="securosys.ch/integration/tests" time="1.260"></testcase>
+		<testcase name="TestCreateRSAKeyPlugin/C.9_Test_Remove_Key_RSA_Key_with_name_integrationTestKeyRSA" classname="securosys.ch/integration/tests" time="1.930"></testcase>
+		<testcase name="TestCreateSmartRSAKeyPlugin" classname="securosys.ch/integration/tests" time="13.310"></testcase>
+		<testcase name="TestCreateSmartRSAKeyPlugin/C.1_Test_Create_Key_Smart_RSA_Key_with_name_integrationTestKeySmartRSA" classname="securosys.ch/integration/tests" time="4.530"></testcase>
+		<testcase name="TestCreateSmartRSAKeyPlugin/C.2_Test_List_Keys" classname="securosys.ch/integration/tests" time="0.000"></testcase>
+		<testcase name="TestCreateSmartRSAKeyPlugin/C.3_Read_Smart_RSA_Key_with_name_integrationTestKeySmartRSA" classname="securosys.ch/integration/tests" time="0.000"></testcase>
+		<testcase name="TestCreateSmartRSAKeyPlugin/C.4_Rotate_Smart_RSA_Key_with_name_integrationTestKeySmartRSA" classname="securosys.ch/integration/tests" time="3.740"></testcase>
+		<testcase name="TestCreateSmartRSAKeyPlugin/C.5_Test_List_Versions_of_Key_integrationTestKeySmartRSA" classname="securosys.ch/integration/tests" time="0.000"></testcase>
+		<testcase name="TestCreateSmartRSAKeyPlugin/C.6_Test_List_Versions_of_Key_integrationTestKeySmartRSA" classname="securosys.ch/integration/tests" time="0.000"></testcase>
+		<testcase name="TestCreateSmartRSAKeyPlugin/C.7_Block_Smart_RSA_Key_with_name_integrationTestKeySmartRSA" classname="securosys.ch/integration/tests" time="1.280"></testcase>
+		<testcase name="TestCreateSmartRSAKeyPlugin/C.8_UnBlock_Smart_RSA_Key_with_name_integrationTestKeySmartRSA" classname="securosys.ch/integration/tests" time="1.370"></testcase>
+		<testcase name="TestCreateSmartRSAKeyPlugin/C.9_Update_password_Smart_RSA_Key_with_name_integrationTestKeySmartRSA" classname="securosys.ch/integration/tests" time="0.940"></testcase>
+		<testcase name="TestCreateSmartRSAKeyPlugin/C.10_Test_Remove_Key_Smart_RSA_Key_with_name_integrationTestKeySmartRSA" classname="securosys.ch/integration/tests" time="1.450"></testcase>
+		<testcase name="TestOperationsOnKeyPlugin" classname="securosys.ch/integration/tests" time="16.870"></testcase>
+		<testcase name="TestOperationsOnKeyPlugin/D.1_Test_Create_Key_Smart_RSA_Key_with_name_integrationTestKeySmartRSA" classname="securosys.ch/integration/tests" time="4.530"></testcase>
+		<testcase name="TestOperationsOnKeyPlugin/D.2_Test_Create_Key_AES_Key_with_name_integrationTestKeyAES" classname="securosys.ch/integration/tests" time="1.920"></testcase>
+		<testcase name="TestOperationsOnKeyPlugin/D.3_Test_Encrypt_using_integrationTestKeySmartRSA" classname="securosys.ch/integration/tests" time="0.880"></testcase>
+		<testcase name="TestOperationsOnKeyPlugin/D.4_Test_Encrypt_using_integrationTestKeyAES" classname="securosys.ch/integration/tests" time="0.540"></testcase>
+		<testcase name="TestOperationsOnKeyPlugin/D.5_Test_Decrypt_using_integrationTestKeySmartRSA" classname="securosys.ch/integration/tests" time="1.810"></testcase>
+		<testcase name="TestOperationsOnKeyPlugin/D.6_Test_Decrypt_using_integrationTestKeyAES" classname="securosys.ch/integration/tests" time="1.310"></testcase>
+		<testcase name="TestOperationsOnKeyPlugin/D.7_Test_Sign_using_integrationTestKeySmartRSA" classname="securosys.ch/integration/tests" time="0.840"></testcase>
+		<testcase name="TestOperationsOnKeyPlugin/D.8_Test_Verify_using_integrationTestKeySmartRSA" classname="securosys.ch/integration/tests" time="1.330"></testcase>
+		<testcase name="TestOperationsOnKeyPlugin/D.9_Test_Modify_using_integrationTestKeySmartRSA" classname="securosys.ch/integration/tests" time="2.380"></testcase>
+		<testcase name="TestOperationsOnKeyPlugin/D.10_Test_Remove_Key_Smart_RSA_Key_with_name_integrationTestKeySmartRSA" classname="securosys.ch/integration/tests" time="0.840"></testcase>
+		<testcase name="TestOperationsOnKeyPlugin/D.11_Test_Remove_Key_AES_Key_with_name_integrationTestKeyAES" classname="securosys.ch/integration/tests" time="0.500"></testcase>
+	</testsuite>
+</testsuites>
