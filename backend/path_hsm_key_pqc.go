@@ -86,6 +86,63 @@ func pathHSM_PQCKeys(b *SecurosysBackend) []*framework.Path {
 	}
 }
 
+// pathHSM_MLKEMKeys exposes a dedicated key creation path that accepts only
+// ML-KEM algorithms. The generic keys/pqc path remains backwards compatible.
+func pathHSM_MLKEMKeys(b *SecurosysBackend) []*framework.Path {
+	return []*framework.Path{
+		{
+			Pattern: "keys/ml-kem/" + framework.GenericNameRegex("name"),
+			Fields: map[string]*framework.FieldSchema{
+				"name": {
+					Type: framework.TypeLowerCaseString, Required: true,
+					Description: "Name of the ML-KEM key in Vault",
+				},
+				"algorithm": {
+					Type: framework.TypeString, Required: true,
+					Description: "ML-KEM algorithm: ML-KEM-512, ML-KEM-768, or ML-KEM-1024",
+				},
+				"keyLabel": {
+					Type: framework.TypeString, Required: true,
+					Description: "Key label in Securosys HSM",
+				},
+				"password": {
+					Type: framework.TypeString, Required: false,
+					Description: "Password of the ML-KEM key",
+				},
+				"policy": {
+					Type: framework.TypeString, Required: false,
+					Description: "Full Securosys HSM key policy JSON",
+				},
+				"simplePolicy": {
+					Type: framework.TypeString, Required: false,
+					Description: "Simplified Securosys HSM key policy JSON",
+				},
+				"attributes": {
+					Type: framework.TypeString, Required: true,
+					Description: "Key attributes; unwrap must be true to use decapsulation",
+				},
+			},
+			Operations: map[logical.Operation]framework.OperationHandler{
+				logical.CreateOperation: &framework.PathOperation{Callback: b.pathKeysMLKEMWrite},
+				logical.UpdateOperation: &framework.PathOperation{Callback: b.pathKeysMLKEMWrite},
+			},
+			HelpSynopsis:    "Create ML-KEM key",
+			HelpDescription: "Create a Securosys ML-KEM key for encapsulation and decapsulation.",
+		},
+	}
+}
+
+func (b *SecurosysBackend) pathKeysMLKEMWrite(ctx context.Context, req *logical.Request, d *framework.FieldData) (*logical.Response, error) {
+	algorithm, ok := d.GetOk("algorithm")
+	if !ok {
+		return logical.ErrorResponse("missing key algorithm"), nil
+	}
+	if !helpers.Contains(helpers.ML_KEM_KEY_TYPES, algorithm.(string)) {
+		return logical.ErrorResponse("ML-KEM key algorithm %s is not supported. Available key algorithms %s", algorithm.(string), helpers.ML_KEM_KEY_TYPES), nil
+	}
+	return b.pathKeysPQCWrite(ctx, req, d)
+}
+
 func (b *SecurosysBackend) pathKeysPQCWrite(ctx context.Context, req *logical.Request, d *framework.FieldData) (*logical.Response, error) {
 	name, ok := d.GetOk("name")
 	if !ok {

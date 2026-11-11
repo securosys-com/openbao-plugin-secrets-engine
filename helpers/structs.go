@@ -168,6 +168,15 @@ type WrapResponse struct {
 	WrappedKey string `json:"wrappedKey"`
 	KeyVersion string `json:"keyVersion"`
 }
+type EncapsulationResponse struct {
+	SharedSecret string `json:"sharedSecret"`
+	Ciphertext   string `json:"ciphertext"`
+	KeyVersion   string `json:"keyVersion"`
+}
+type DecapsulationResponse struct {
+	SharedSecret string `json:"sharedSecret"`
+	KeyVersion   string `json:"keyVersion"`
+}
 type KeyEntry struct {
 	BaseLabel      string                `json:"baseLabel"`
 	Algorithm      string                `json:"algorithm"`

@@ -101,7 +101,7 @@ func testIMPORTKeyCreate(t *testing.T, b logical.Backend, s logical.Storage, d m
 		Storage:   s,
 	})
 	if err != nil {
-		return fmt.Errorf(err.Error())
+		return err
 	}
 
 	if resp != nil && resp.IsError() {

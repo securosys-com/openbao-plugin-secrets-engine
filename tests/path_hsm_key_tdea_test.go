@@ -93,7 +93,7 @@ func testTDEAKeyCreate(t *testing.T, b logical.Backend, s logical.Storage, d map
 	})
 
 	if err != nil {
-		return fmt.Errorf(err.Error())
+		return err
 	}
 
 	if resp != nil && resp.IsError() {

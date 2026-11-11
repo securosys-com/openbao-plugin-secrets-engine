@@ -5,6 +5,7 @@
       environment:
         - DOCKER_OS=alpine3
         - DOCKER_ARCH=amd64
+        - GOTOOLCHAIN=${GOTOOLCHAIN:-go1.27.3}
       image: amd64/golang:1.21.3-alpine3.18
       container_name: golang-alpine3-amd64
       restart: always
@@ -23,6 +24,7 @@
       environment:
         - DOCKER_OS=alpine3
         - DOCKER_ARCH=386
+        - GOTOOLCHAIN=${GOTOOLCHAIN:-go1.27.3}
       image: i386/golang:1.21.3-alpine3.18
       container_name: golang-alpine3-i386
       restart: always
@@ -41,6 +43,7 @@
       environment:
         - DOCKER_OS=alpine3
         - DOCKER_ARCH=arm64
+        - GOTOOLCHAIN=${GOTOOLCHAIN:-go1.27.3}
       image: arm64v8/golang:1.21.3-alpine3.18
       container_name: golang-alpine3-arm64
       restart: always

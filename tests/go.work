@@ -1,5 +1,7 @@
-go 1.21
+go 1.27
+
+replace google.golang.org/genproto v0.0.0-20230306155012-7f2fa6fef1f4 => google.golang.org/genproto v0.0.0-20260908043556-f8649ddbbfe6
 
 use (
-       ./
+	./
 )

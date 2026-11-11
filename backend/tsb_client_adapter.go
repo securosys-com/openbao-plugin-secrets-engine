@@ -101,11 +101,11 @@ func (c *TSBClient) AsyncBlock(label string, password string, customMetaData map
 }
 
 func (c *TSBClient) UnBlock(label string, password string) (int, error) {
-	return c.SecurosysClient.UnBlock(context.Background(), label, password)
+	return c.SecurosysClient.Unblock(context.Background(), label, password)
 }
 
 func (c *TSBClient) AsyncUnBlock(label string, password string, customMetaData map[string]string) (string, int, error) {
-	return c.SecurosysClient.AsyncUnBlock(context.Background(), label, password, customMetaData)
+	return c.SecurosysClient.AsyncUnblock(context.Background(), label, password, customMetaData)
 }
 
 func (c *TSBClient) Modify(label string, password string, policy helpers.Policy) (int, error) {
@@ -158,11 +158,21 @@ func (c *TSBClient) Wrap(wrapKeyName string, wrapKeyPassword string, keyToBeWrap
 }
 
 func (c *TSBClient) AsyncUnWrap(wrappedKey string, label string, attributes map[string]bool, unwrapKeyName string, unwrapKeyPassword string, wrapMethod string, policy *helpers.Policy, customMetaData map[string]string) (string, int, error) {
-	return c.SecurosysClient.AsyncUnWrap(wrappedKey, label, attributes, unwrapKeyName, unwrapKeyPassword, tsb.WrapMethod(wrapMethod), toTSBPolicyPtr(policy), customMetaData)
+	return c.SecurosysClient.AsyncUnwrap(context.Background(), wrappedKey, label, attributes, unwrapKeyName, unwrapKeyPassword, tsb.WrapMethod(wrapMethod), toTSBPolicyPtr(policy), customMetaData)
 }
 
 func (c *TSBClient) UnWrap(wrappedKey string, label string, attributes map[string]bool, unwrapKeyName string, unwrapKeyPassword string, wrapMethod string, policy *helpers.Policy) (int, error) {
-	return c.SecurosysClient.UnWrap(wrappedKey, label, attributes, unwrapKeyName, unwrapKeyPassword, tsb.WrapMethod(wrapMethod), toTSBPolicyPtr(policy))
+	return c.SecurosysClient.Unwrap(context.Background(), wrappedKey, label, attributes, unwrapKeyName, unwrapKeyPassword, tsb.WrapMethod(wrapMethod), toTSBPolicyPtr(policy))
+}
+
+func (c *TSBClient) Encapsulate(publicKey string) (*helpers.EncapsulationResponse, int, error) {
+	response, code, err := c.SecurosysClient.Encapsulate(context.Background(), publicKey)
+	return convertPtr[tsbhelpers.EncapsulationResponse, helpers.EncapsulationResponse](response), code, err
+}
+
+func (c *TSBClient) Decapsulate(label string, password string, ciphertext string) (*helpers.DecapsulationResponse, int, error) {
+	response, code, err := c.SecurosysClient.Decapsulate(context.Background(), label, password, ciphertext)
+	return convertPtr[tsbhelpers.DecapsulationResponse, helpers.DecapsulationResponse](response), code, err
 }
 
 func (c *TSBClient) CreateCertificate(signKeyName string, keyPassword string, signatureAlgorithm string, validity int, certAttributes helpers.CertificateAttributes, keyUsage []string, extendedKeyUsage []string) (*helpers.GenerateCertificateRequestResponse, int, error) {

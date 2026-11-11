@@ -1,5 +1,7 @@
 UNAME = $(shell uname -s)
 SHELL := /bin/bash
+GO_MIN_TOOLCHAIN ?= go1.27.0
+GO_PATCH_TOOLCHAIN ?= go1.27.3
 .DEFAULT_GOAL := all
 TEST_RESULT_PATH = $(PWD)/
 TEST_LOG_PATH ?= $(TEST_RESULT_PATH)test_report.log
@@ -10,6 +12,8 @@ override ARTIFACT_NAME = HCVault_Plugin-Secrets-Engine
 endif
 
 all: fmt build start
+release release-all release-alpine3 build: export GOTOOLCHAIN = $(GO_PATCH_TOOLCHAIN)
+
 release:
 	@if [ "$(OS)" == "" ] && [ "$(ARCH)" == "" ] && [ "$(UNAME)" == "windows" ] ; then\
 		echo "Build windows"; \

@@ -48,6 +48,8 @@ var POST_QUANTUM_KEY_TYPES = []string{
 
 var POST_QUANTUM_RETURNED_KEY_TYPES = []string{"HSS-LMS", "XMSS"}
 
+var ML_KEM_KEY_TYPES = []string{"ML-KEM-512", "ML-KEM-768", "ML-KEM-1024"}
+
 var SUPPORTED_KEY_TYPES = append(append([]string{"EC", "ED", "RSA", "DSA", "BLS", "AES", "ChaCha20", "Camellia", "TDEA"}, POST_QUANTUM_KEY_TYPES...), POST_QUANTUM_RETURNED_KEY_TYPES...)
 var SYMMETRIC_KEY_TYPES = []string{"AES", "Camellia", "ChaCha20", "TDEA"}
 var ASYMMETRIC_KEY_TYPES = append(append([]string{"EC", "ED", "RSA", "DSA", "BLS"}, POST_QUANTUM_KEY_TYPES...), POST_QUANTUM_RETURNED_KEY_TYPES...)

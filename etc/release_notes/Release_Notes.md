@@ -1,5 +1,21 @@
 EULA: https://www.securosys.com/eula
 
+# Securosys OpenBao Secrets Engine 1.4.1
+
+Issued: Nov, 10, 2026
+
+## Security
+
+- Enabled TLS server certificate verification for certificate-based TSB authentication
+
+# Securosys OpenBao Secrets Engine 1.4.0
+
+Issued: Sep, 2, 2026
+
+## Feature
+
+- Added support for ML-KEM encapsulate/decapsulate
+
 # Securosys OpenBao Secrets Engine 1.3.0
 
 Issued: Jul, 13, 2026

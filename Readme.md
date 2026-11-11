@@ -58,7 +58,7 @@ Further documentation and credentials are available via the [Securosys Support P
 
 ### Build from sources
 
->**Prerequisites:** Install Golang 1.16+ ([download](https://go.dev/dl/))
+>**Prerequisites:** Install Golang 1.25.12+ ([download](https://go.dev/dl/))
 
 1. Run `go mod init`.
 
@@ -523,9 +523,9 @@ The plugin allows to create, modify, and manage keys on the Securosys Primus HSM
     | SLH-DSA-SHAKE-192f | Sign and verify |
     | SLH-DSA-SHAKE-256s | Sign and verify |
     | SLH-DSA-SHAKE-256f | Sign and verify |
-    | ML-KEM-512 | Wrap and unwrap |
-    | ML-KEM-768 | Wrap and unwrap |
-    | ML-KEM-1024 | Wrap and unwrap |
+    | ML-KEM-512 | Wrap/unwrap and encapsulate/decapsulate |
+    | ML-KEM-768 | Wrap/unwrap and encapsulate/decapsulate |
+    | ML-KEM-1024 | Wrap/unwrap and encapsulate/decapsulate |
     | LMS | Sign and verify |
     | XMSS-SHA256_10_256 | Sign and verify |
     | XMSS-SHAKE256_10_256 | Sign and verify |
@@ -558,6 +558,27 @@ The plugin allows to create, modify, and manage keys on the Securosys Primus HSM
     | SLH-DSA | `SLH_DSA`, `SHA2_224_WITH_SLH_DSA`, `SHA2_256_WITH_SLH_DSA`, `SHA2_384_WITH_SLH_DSA`, `SHA2_512_WITH_SLH_DSA`, `SHA3_224_WITH_SLH_DSA`, `SHA3_256_WITH_SLH_DSA`, `SHA3_384_WITH_SLH_DSA`, `SHA3_512_WITH_SLH_DSA`, `SHAKE_128_WITH_SLH_DSA`, `SHAKE_256_WITH_SLH_DSA` |
     | LMS | `LMS` |
     | XMSS | `XMSS-SHA256_10_256`, `XMSS-SHAKE256_10_256` |
+
+1) **create ML-KEM key** - Create a key dedicated to ML-KEM encapsulation and decapsulation. This endpoint accepts only `ML-KEM-512`, `ML-KEM-768`, and `ML-KEM-1024`.
+
+    ```shell
+    $ vault write securosys-hsm/keys/ml-kem/{key-name} \
+    algorithm="ML-KEM-768" \
+    keyLabel="{key-label-hsm}" \
+    attributes='{"decrypt": false,"encrypt": false,"sign": false,"verify": false,"wrap": true,"unwrap": true,"extractable": true,"destroyable": true}' \
+    [password="{password-for-a-key}"]
+    ```
+
+    ```shell
+    curl --location --request PUT '<server_addr>/v1/securosys-hsm/keys/ml-kem/{key-name}' \
+    --header 'X-Vault-Token: <vault_access_token>' \
+    --header 'Content-Type: application/x-www-form-urlencoded' \
+    --data-urlencode 'algorithm=ML-KEM-768' \
+    --data-urlencode 'keyLabel={key-label-hsm}' \
+    --data-urlencode 'attributes={"decrypt": false,"encrypt": false,"sign": false,"verify": false,"wrap": true,"unwrap": true,"extractable": true,"destroyable": true}'
+    ```
+
+    The optional `policy` or `simplePolicy` field can be used to attach an HSM policy. The `unwrap` attribute must be `true` to allow decapsulation.
 
 1) **import** - Import a new key into the HSM
     ```shell
@@ -837,6 +858,37 @@ In case the referenced key has a policy attached, then a request-id is returned,
     --data-urlencode 'additionalMetaData={additional-meta-data-in-json-object-format}'
     ```
 
+1) **Encapsulate** - Generate a shared secret and ciphertext using the public key of the active ML-KEM key version.
+
+    ```shell
+    $ vault write securosys-hsm/operation/encapsulate/{key-name}
+    ```
+
+    ```shell
+    curl --location --request PUT '<server_addr>/v1/securosys-hsm/operation/encapsulate/{key-name}' \
+    --header 'X-Vault-Token: <vault_access_token>'
+    ```
+
+    The response contains `sharedSecret`, `ciphertext`, and `keyVersion`. Pass `ciphertext` unchanged to the decapsulation operation; do not transmit or persist `sharedSecret` as plaintext.
+
+1) **Decapsulate** - Recover the shared secret from an ML-KEM ciphertext using the private key stored in the HSM.
+
+    ```shell
+    $ vault write securosys-hsm/operation/decapsulate/{key-name} \
+    ciphertext="{base64-encoded-ciphertext}" \
+    [password="{password-for-a-key}"]
+    ```
+
+    ```shell
+    curl --location --request PUT '<server_addr>/v1/securosys-hsm/operation/decapsulate/{key-name}' \
+    --header 'X-Vault-Token: <vault_access_token>' \
+    --header 'Content-Type: application/x-www-form-urlencoded' \
+    --data-urlencode 'ciphertext={base64-encoded-ciphertext}' \
+    --data-urlencode 'password={password-for-a-key}'
+    ```
+
+    The response contains `sharedSecret` and `keyVersion`. The ciphertext must be valid Base64, the key must be an ML-KEM key, and its `unwrap` attribute must be `true`.
+
     
 ---
 ### Requests
@@ -949,6 +1001,10 @@ Or run each test separately:
 | TestRequests | Tests connection and all asynchronous operations (with policy) for all types of keys | 
 | TestRotateKeys | Tests key rotation option for all type of keys | 
 | TestCreateKeyUsingTypeName | Tests key creation based on types supported by OpenBao Key Management| 
+| TestCreatePQCKeys | Tests creation and deletion of supported post-quantum keys |
+| TestMLKEMEncapsulateAndDecapsulate | Tests ML-KEM-512, ML-KEM-768, and ML-KEM-1024 key creation, encapsulation, and decapsulation |
+| TestMLKEMCreationRejectsNonKEMAlgorithm | Tests rejection of non-ML-KEM algorithms on the dedicated ML-KEM endpoint |
+| TestKEMOperationsRejectNonKEMKey | Tests rejection of encapsulation and decapsulation with a non-ML-KEM key |
 
 ## Integrations
 ### MariaDB

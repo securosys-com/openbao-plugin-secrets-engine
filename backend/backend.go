@@ -73,11 +73,13 @@ func Backend(conf *logical.BackendConfig) *SecurosysBackend {
 			pathHSM_EDKeys(&b),
 			pathHSM_BLSKeys(&b),
 			pathHSM_PQCKeys(&b),
+			pathHSM_MLKEMKeys(&b),
 			pathHSM_ImportKeys(&b),
 			pathHSM_KeyNamesKeys(&b),
 			pathHSMHealth(&b),
 			pathHSMKeys(&b),
 			pathOperations(&b),
+			pathKEMOperations(&b),
 			pathRequests(&b),
 			pathMariaDBIntegration(&b),
 			[]*framework.Path{
