@@ -1,5 +1,13 @@
 EULA: https://www.securosys.com/eula
 
+# Securosys OpenBao Secrets Engine 1.4.2
+
+Issued: Nov, 11, 2026
+
+## Update
+
+- Updated tsb-client-go to 1.4.2
+
 # Securosys OpenBao Secrets Engine 1.4.1
 
 Issued: Nov, 10, 2026

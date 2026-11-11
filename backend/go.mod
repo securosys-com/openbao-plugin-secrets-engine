@@ -9,7 +9,7 @@ go 1.27
 require (
 	github.com/andreburgaud/crypt2go v1.2.0
 	github.com/hashicorp/vault/sdk v0.9.1
-	github.com/securosys-com/tsb-client-go v1.4.1
+	github.com/securosys-com/tsb-client-go v1.4.2
 	securosys.ch/helpers v0.0.0-00010101000000-000000000000
 )
 

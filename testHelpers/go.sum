@@ -176,6 +176,8 @@ github.com/ryanuber/go-glob v1.0.0 h1:iQh3xXAumdQ+4Ufa5b25cRpC5TYKlno6hsv6Cb3pkB
 github.com/ryanuber/go-glob v1.0.0/go.mod h1:807d1WSdnB0XRJzKNil9Om6lcp/3a0v4qIHxIXzX/Yc=
 github.com/securosys-com/tsb-client-go v1.4.1 h1:V4pLOWDvK51eyZB/gURhmbr1zr0n7yrLeW26rD3nUeg=
 github.com/securosys-com/tsb-client-go v1.4.1/go.mod h1:VO3p99ATr8fpytySaA9DD2hrhu0W0pKTKNr9aWkaGX4=
+github.com/securosys-com/tsb-client-go v1.4.2 h1:l55LAS8GXGNFsmZcTpY58LMhira/9bEuPvUNe577M8U=
+github.com/securosys-com/tsb-client-go v1.4.2/go.mod h1:VO3p99ATr8fpytySaA9DD2hrhu0W0pKTKNr9aWkaGX4=
 github.com/sirupsen/logrus v1.2.0/go.mod h1:LxeOpSwHxABJmUn/MG1IvRgCAasNZTLOkJPxbbu5VWo=
 github.com/sirupsen/logrus v1.4.2/go.mod h1:tLMulIdttU9McNUspp0xgXVQah82FyeX6MwdIuYE2rE=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
